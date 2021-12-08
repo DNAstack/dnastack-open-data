@@ -7,15 +7,18 @@ Assembled SARS-CoV-2 viral genomes may be classified as belonging to a particula
 
 The input to the workflow is an array of paths to assembled SARS-CoV-2 genomes.
 
-For details on filling out the `inputs.json` file, see this [README](../README.md).
+For details on preparing the `inputs.json` file, see the corresponding section in the [README](../README.md#preparing-the-inputsjson-file).
 
-- If the workflow is being run locally, you should first download the assembly files (e.g. using the [AWS CLI](../../README.md##Data-access)), and use absolute paths to the files in the `inputs.json` file (or paths relative to the directory from which you are executing the workflow).
+- If the workflow is being run locally, you should first [download the assembly files](../../README.md#data-access), and use absolute paths to the files in the `inputs.json` file (or paths relative to the directory from which you are executing the workflow).
 - If the workflow is being run on AWS (e.g. via the [Amazon Genomics CLI](https://aws.amazon.com/genomics-cli/)), `s3://` URLs to the files in the `s3://dnastack-covid-19-data` can be used instead, and local download is not required. **Note that if the workflow is run on AWS, cloud compute and storage costs will be incurred**
 
 
 ## Example `inputs.json` files
 
 Each of the `example_inputs.*.json` files in this directory will run the workflow using 10 samples as input.
+
+- The `example_inputs.local.json` file should be used when running the workflow locally
+- The `example_inputs.aws.json` file should be used when running the workflow in AWS
 
 To run locally, first download the files from s3:
 
@@ -36,4 +39,4 @@ The workflow outputs a CSV file containing a lineage assignment for each of the 
 
 ## Running the workflow
 
-See the [README](../README.md) for advice on running the tutorial workflows, either locally or in the AWS cloud.
+See the [README](../README.md) for details on running the tutorial workflows, either locally or in the AWS cloud.

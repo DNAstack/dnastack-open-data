@@ -1,6 +1,6 @@
 # Running tutorial workflows
 
-Tutorial workflows are written in [Workflow Description Language (WDL)](https://openwdl.org/#:~:text=The%20Workflow%20Description%20Language%20(WDL,workflows%2C%20and%20parallelize%20their%20execution.), a pipelining language that can be run on a number of infrastructures and backends including locally and in Cloud compute environments.
+Tutorial workflows are written in [Workflow Description Language (WDL)](https://openwdl.org), a workflow language that can be run on a number of infrastructures and backends including locally and in Cloud compute environments.
 
 Tools required for data analysis are packaged into [Docker containers](https://www.docker.com/), which ensures that the workflows will run consistently and reproducibly.
 
@@ -15,7 +15,7 @@ Each tutorial contains an unmodified `inputs.json` file, as well as an `example_
 
 ## Running workflows locally
 
-To run workflows locally, any file-type inputs must first be downloaded to a local directory. This can be done using the [AWS CLI](../README.md##Data-access).
+To run workflows locally, any file-type inputs must first be downloaded to a local directory. This can be done using the [AWS CLI](../README.md#data-access).
 
 
 ### Via Cromwell
@@ -25,7 +25,7 @@ Requirements:
 - [Docker](https://docs.docker.com/get-docker/)
 
 
-1. Download the latest version of the Cromwell jar file from the [releases page](https://github.com/broadinstitute/cromwell/releases/tag/72).
+1. Download the latest version of the Cromwell jar file from the [releases page](https://github.com/broadinstitute/cromwell/releases).
 
 e.g. for Cromwell version 72:
 ```bash
@@ -68,7 +68,7 @@ miniwdl run workflow_file -i input_json_file
 Where the **workflow_file** is the path to the `.wdl` file you are trying to run, and the **inputs_json_file** is the path to the corresponding inputs file you prepared in step 2.
 
 
-## Running workflows in the AWS cloud
+## Running workflows in AWS
 
 **Workflows run in the AWS cloud will incur cloud compute costs**.
 File-type inputs can be accessed directly from the cloud and will not need to be downloaded locally; the full `s3://` URL to these files should be used in the `inputs.json` file.
@@ -76,7 +76,7 @@ File-type inputs can be accessed directly from the cloud and will not need to be
 
 ### Via the Amazon Genomics CLI
 
-1. Make sure you are in this directory (dnastack-open-data/tutorials).
+1. Make sure you are in this directory (`dnastack-open-data/tutorials`).
 
 2. Set up your AWS environment using the [AGC getting started documentation](https://aws.github.io/amazon-genomics-cli/docs/getting-started/).
 
