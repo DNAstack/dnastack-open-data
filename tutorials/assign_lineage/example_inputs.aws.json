@@ -1,0 +1,15 @@
+{
+  "assign_lineage.assemblies": [
+    "s3://dnastack-covid-19-data/NCBI_SRA/ERR4082025/ERR4082025.consensus.fasta",
+    "s3://dnastack-covid-19-data/NCBI_SRA/ERR4082026/ERR4082026.consensus.fasta",
+    "s3://dnastack-covid-19-data/NCBI_SRA/ERR4082027/ERR4082027.consensus.fasta",
+    "s3://dnastack-covid-19-data/NCBI_SRA/ERR4082028/ERR4082028.consensus.fasta",
+    "s3://dnastack-covid-19-data/NCBI_SRA/ERR4082029/ERR4082029.consensus.fasta",
+    "s3://dnastack-covid-19-data/NCBI_SRA/ERR4082030/ERR4082030.consensus.fasta",
+    "s3://dnastack-covid-19-data/NCBI_SRA/ERR4082031/ERR4082031.consensus.fasta",
+    "s3://dnastack-covid-19-data/NCBI_SRA/ERR4082032/ERR4082032.consensus.fasta",
+    "s3://dnastack-covid-19-data/NCBI_SRA/ERR4082033/ERR4082033.consensus.fasta",
+    "s3://dnastack-covid-19-data/NCBI_SRA/ERR4082034/ERR4082034.consensus.fasta"
+  ]
+}
+

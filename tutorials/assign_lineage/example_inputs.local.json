@@ -1,0 +1,15 @@
+{
+  "assign_lineage.assemblies": [
+    "data/ERR4082025.consensus.fasta",
+    "data/ERR4082026.consensus.fasta",
+    "data/ERR4082027.consensus.fasta",
+    "data/ERR4082028.consensus.fasta",
+    "data/ERR4082029.consensus.fasta",
+    "data/ERR4082030.consensus.fasta",
+    "data/ERR4082031.consensus.fasta",
+    "data/ERR4082032.consensus.fasta",
+    "data/ERR4082033.consensus.fasta",
+    "data/ERR4082034.consensus.fasta"
+  ]
+}
+

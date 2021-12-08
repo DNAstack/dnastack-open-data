@@ -1,0 +1,6 @@
+{
+  "mainWorkflowURL": "assign_lineage.wdl",
+  "inputFileURLs": [
+    "example_inputs.aws.json"
+  ]
+}
