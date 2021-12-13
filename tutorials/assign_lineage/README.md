@@ -10,7 +10,7 @@ The input to the workflow is an array of paths to assembled SARS-CoV-2 genomes.
 For details on preparing the `inputs.json` file, see the corresponding section in the [README](../README.md#preparing-the-inputsjson-file).
 
 - If the workflow is being run locally, you should first [download the assembly files](../../README.md#data-access), and use absolute paths to the files in the `inputs.json` file (or paths relative to the directory from which you are executing the workflow).
-- If the workflow is being run on AWS (e.g. via the [Amazon Genomics CLI](https://aws.amazon.com/genomics-cli/)), `s3://` URLs to the files in the `s3://dnastack-covid-19-data` can be used instead, and local download is not required. **Note that if the workflow is run on AWS, cloud compute and storage costs will be incurred**
+- If the workflow is being run on AWS (e.g. via the [Amazon Genomics CLI](https://aws.amazon.com/genomics-cli/)), `s3://` URLs to the files in the `s3://dnastack-covid-19-sra-data` can be used instead, and local download is not required. **Note that if the workflow is run on AWS, cloud compute and storage costs will be incurred**
 
 
 ## Example `inputs.json` files
@@ -25,7 +25,7 @@ To run locally, first download the files from s3:
 ```
 mkdir data
 for sample in ERR4082025 ERR4082026 ERR4082027 ERR4082028 ERR4082029 ERR4082030 ERR4082031 ERR4082032 ERR4082033 ERR4082034; do
-    aws s3 cp s3://dnastack-covid-19-data/NCBI_SRA/${sample}/${sample}.consensus.fasta ./data/ --no-sign-request
+    aws s3 cp s3://dnastack-covid-19-sra-data/NCBI_SRA/${sample}/${sample}.consensus.fasta ./data/ --no-sign-request
 done
 ```
 

@@ -12,5 +12,5 @@ workflows:
             version: 1.0
         sourceURL: ./assign_lineage
 data:
-    - location: s3://dnastack-covid-19-data
+    - location: s3://dnastack-covid-19-sra-data
       readOnly: true

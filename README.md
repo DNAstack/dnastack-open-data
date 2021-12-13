@@ -27,7 +27,7 @@ Data from different sequencing technologies was processed using different pipeli
 #### Data structure
 
 ```
-s3://dnastack-covid-19-data/
+s3://dnastack-covid-19-sra-data/
 └── NCBI_SRA
     └── {sample}
         ├── {sample}_1.fastq.gz
@@ -59,7 +59,7 @@ s3://dnastack-covid-19-data/
 #### Data structure
 
 ```
-s3://dnastack-covid-19-data/
+s3://dnastack-covid-19-sra-data/
 └── NCBI_SRA
     └── {sample}
         ├── {sample}.consensus.fasta
@@ -73,18 +73,18 @@ s3://dnastack-covid-19-data/
 
 ## Data access
 
-The data is available in the AWS S3 bucket `s3://dnastack-covid-19-data`.
+The data is available in the AWS S3 bucket `s3://dnastack-covid-19-sra-data`.
 
 Data can be listed and downloaded using the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html).
 
 List data:
 ```bash
-aws s3 ls s3://dnastack-covid-19-data/ --no-sign-request
+aws s3 ls s3://dnastack-covid-19-sra-data/ --no-sign-request
 ```
 
 Download a file:
 ```bash
-aws s3 cp s3://dnastack-covid-19-data/NCBI_SRA/ERR4082025/ERR4082025.consensus.fasta . --no-sign-request
+aws s3 cp s3://dnastack-covid-19-sra-data/NCBI_SRA/ERR4082025/ERR4082025.consensus.fasta . --no-sign-request
 ```
 
 
