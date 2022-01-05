@@ -25,7 +25,7 @@ To run locally, first download the files from s3:
 ```
 mkdir data
 for sample in ERR4082025 ERR4082026 ERR4082027 ERR4082028 ERR4082029 ERR4082030 ERR4082031 ERR4082032 ERR4082033 ERR4082034; do
-    aws s3 cp s3://dnastack-covid-19-sra-data/NCBI_SRA/${sample}/${sample}.consensus.fasta ./data/ --no-sign-request
+    aws s3 cp s3://dnastack-covid-19-sra-data/Illumina_PE/fasta/${sample}/${sample}.consensus.fasta ./data/ --no-sign-request
 done
 ```
 

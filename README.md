@@ -7,7 +7,47 @@ For details about the data processing methods and pipelines used, see [this blog
 
 ## Data structure and content
 
-Data from different sequencing technologies was processed using different pipelines, resulting in different sets of output files. The major sequencing technologies that were processed as part of this initiative were Illumina paired-end sequencing samples and Oxford Nanopore single-ended sequencing samples.
+Data from different sequencing technologies was processed using different pipelines, resulting in different sets of output files. The major sequencing technologies that were processed as part of this initiative were Pacific Biosciences reads (PacBio), Illumina paired-end sequencing samples, Oxford Nanopore single-ended sequencing samples.
+
+The bucket is structured as follows:
+
+```
+s3://dnsastack-covid-19-sra-data
+├── Illumina_PE
+│   ├── bam
+│   │   └── {sample}
+│   │       └── {sample}.bam
+│   ├── fasta
+│   ├── fastq
+│   ├── vcf
+│   └── zip
+├── Oxford_Nanopore
+│   ├── bam
+│   ├── fasta
+│   ├── fastq
+│   ├── vcf
+│   └── zip
+└── PacBio
+    ├── bam
+    ├── fasta
+    ├── fastq
+    └── vcf
+```
+
+Samples are split by sequencing technology, then file type, and finally are prefixed by the sample name (the SRA run name) (see the s3://dnastack-covid-19-sra-data > Illumina_PE > bam example above; all other file types are structured similarly). Where index files are available (e.g. for VCF files), they are provided alongside the file they index. In some cases, multiple files of a certain type can exist for a single sample (e.g. R1s and R2s for paired-end Illumina samples in the `fastq` folder, or multiple `vcf` files produced by different variant callers).
+
+
+
+### PacBio samples
+
+#### Data content
+
+| Data type          | File format          | File extension       | Description                                                                                                                                                 |
+|--------------------|----------------------|----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Raw reads          | Compressed FASTQ     | .fastq.gz            | Sequencing files converted from SRA objects using the [sra-toolkit](https://github.com/ncbi/sra-tools). Single-ended reads are stored as {sample}.fastq.gz. |
+| Read alignments    | Binary alignment map | .bam                 | Aligned and sorted reads. Reads are aligned to the SARS-CoV-2 reference genome, [NC_045512](https://www.ncbi.nlm.nih.gov/nuccore/NC_045512).                |
+| Assembly           | FASTA                | .fa                  | Reads assembled into contiguous genomic regions.                                                                                                            |
+| Variants and index | VCF, TBI             | .vcf.gz, .vcf.gz.tbi | Genomic sites and regions that differ between a particular sample and the reference genome.                                                                 |
 
 
 ### Illumina paired-end samples
@@ -24,25 +64,6 @@ Data from different sequencing technologies was processed using different pipeli
 
 
 
-#### Data structure
-
-```
-s3://dnastack-covid-19-sra-data/
-└── NCBI_SRA
-    └── {sample}
-        ├── {sample}_1.fastq.gz
-        ├── {sample}_2.fastq.gz
-        ├── {sample}.freebayes.fa
-        ├── {sample}.freebayes.vcf.gz
-        ├── {sample}.freebayes.vcf.gz.tbi
-        ├── {sample}.ivar.fa
-        ├── {sample}.ivar.vcf.gz
-        ├── {sample}.ivar.vcf.gz.tbi
-        ├── {sample}_summary.zip
-        └── {sample}_viral_reference.mapping.primertrimmed.sorted.bam
-```
-
-
 ### Oxford Nanopore single-ended samples
 
 #### Data content
@@ -54,21 +75,6 @@ s3://dnastack-covid-19-sra-data/
 | Assembly           | FASTA                                                    | .fasta               | Reads assembled into contiguous genomic regions.                                                                                                            |
 | Variants and index | VCF, TBI                                                 | .vcf.gz, .vcf.gz.tbi | Genomic sites and regions that differ between a particular sample and the reference genome.                                                                 |
 | Summary statistics | Zip archive containing plots and quality control reports | .zip                 | Information about the raw and transformed files, variants, and lineage information gathered throughout the processing pipeline.                             |
-
-
-#### Data structure
-
-```
-s3://dnastack-covid-19-sra-data/
-└── NCBI_SRA
-    └── {sample}
-        ├── {sample}.consensus.fasta
-        ├── {sample}.fastq.gz
-        ├── {sample}.primertrimmed.rg.sorted.bam
-        ├── {sample}.vcf.gz
-        ├── {sample}.vcf.gz.tbi
-        └── {sample}_summary.zip
-```
 
 
 ## Data access
@@ -84,7 +90,7 @@ aws s3 ls s3://dnastack-covid-19-sra-data/ --no-sign-request
 
 Download a file:
 ```bash
-aws s3 cp s3://dnastack-covid-19-sra-data/NCBI_SRA/ERR4082025/ERR4082025.consensus.fasta . --no-sign-request
+aws s3 cp s3://dnastack-covid-19-sra-data/PacBio/fasta/SRR16804664/SRR16804664.fasta . --no-sign-request
 ```
 
 
